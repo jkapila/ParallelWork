@@ -8,8 +8,8 @@ import multiprocessing
 
 class Parallelize(object):
 
-    def __init__(self, func, func_params, processes=-1, split_data=True, agg_func=None, agg_func_params=None,
-                 func_exec_text=None, split_eval_func=None, timer=True, verbose=False):
+    def __init__(self, func, func_params, processes=-1, split_data=True, split_axis=0, agg_func=None,
+                 agg_func_params=None, func_exec_text=None, split_eval_func=None, timer=True, verbose=False):
 
         self.func = func
         self.func_params = func_params
@@ -21,6 +21,7 @@ class Parallelize(object):
 
         self.data = None
         self.split_data = split_data
+        self.split_axis =split_axis
         self.data_list = []
         self.outputs = []
 
@@ -41,7 +42,7 @@ class Parallelize(object):
 
         if self.split_data:
 
-            for l in np.array_split(data, self.processes):
+            for l in np.array_split(data, self.processes, axis=self.split_axis):
                 if self.verbose:
                     print('Split Shape: {}'.format(l.shape))
                 if self.split_eval_func is not None:

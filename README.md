@@ -12,13 +12,14 @@ Data Parallelization is supported (for 2d arrays only) via:
 Task Parallelization is in WIP.
 
 <hr></hr>
+<br></br>
 
 
 How to use this library ?
 
 ```{python}
 import numpy as np
-from parallelwork import Parallelize
+import parallelwork as pw
 
 # write and task function
 def test_func(data):
@@ -28,7 +29,7 @@ def test_func(data):
 arr = np.arange(1, 100000001, 1).reshape(20000000, 5)
 
 # setup parallelize class for execution
-parallelizer = Parallelize(func=test_func, func_params={}, processes=-1)
+parallelizer = pw.Parallelize(func=test_func, func_params={}, processes=-1)
 
 # provide data to the executer
 parallelizer.execute(arr)
