@@ -5,7 +5,7 @@ Parallelization can be achieved by two methods in Python:
 1) Data Parallelization
 2) Task Parallelization
 
-This supports Data Parallelization is supported (for 2d arrays only) via:
+This library supports Data Parallelization (for 2d arrays only) via:
  * Splitting via Axes - Row wise or Column Wise
  * Splitting via Unique Values
 
@@ -72,7 +72,7 @@ pworker.split_eval_func = None
 ```
 **Note: The results are stored inside class. So it may consume memory after execution.**
 
-**For more expample looks a examples.py !**
+**For more example looks a examples.py !**
 
 
 Next Steps:
