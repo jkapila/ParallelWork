@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='ParallelWork',
-    version='0.1dev',
+    version='0.4',
     author = "Jitin Kapila",
     author_email = "jitin.kapila@gmail.com",
     packages=['parallelwork', ],
