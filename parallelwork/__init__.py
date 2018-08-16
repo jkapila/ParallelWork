@@ -1,1 +1,1 @@
-from .parallelize import Parallelize
+from .parallelize import ParallelizeData

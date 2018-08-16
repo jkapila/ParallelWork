@@ -8,6 +8,9 @@ Parallelization can be achieved by two methods in Python:
 This library supports Data Parallelization (for 2d arrays only) via:
  * Splitting via Axes - Row wise or Column Wise
  * Splitting via Unique Values
+ * Random Subset of Data
+ * Splitting by user defined function
+
 
 <hr></hr>
 <br></br>
@@ -27,7 +30,7 @@ def test_func(data):
 arr = np.arange(1, 100000001, 1).reshape(20000000, 5)
 
 # setup parallelize class for execution
-pworker = pw.Parallelize()
+pworker = pw.ParallelizeData()
 
 # declare what function to execute
 pworker.func = test_func
@@ -46,7 +49,7 @@ One can declare various fucntions on the data and output as follows:
 ```{python}
 import parallelwork as pw
 
-pworker = pw.Parallelize()
+pworker = pw.ParallelizeData()
 
 # Main task fucntion to execute on data
 pworker.func = None
@@ -68,18 +71,40 @@ pworker.split_func = None
 # A function to exectue on splitted data once the split is done.
 pworker.split_eval_func = None
 
+```
+
+
+To install you can do:
+```
+# to install via pip
+pip install git+https://github.com/jkapila/ParallelWork.git
+
+# or download the git and just do
+python setup.py
 
 ```
-**Note: The results are stored inside class. So it may consume memory after execution.**
+
+
+**Note 1: The results are stored inside class.
+So it may consume memory after execution.**
+
+**Note 2: one should be very careful with dtypes as very huge data values
+are not easyly pickalable and tends to cause errors.**
 
 **For more example looks a examples.py !**
 
 
 Next Steps:
 1) Blog for usage methods and use cases
-2) Async mapper
-3) Use manager for higher performance on heaviery functions
-4) Native support for list and tuples
+2) Make Async mapper parallel processing
+3) Task parallelization with list
+4) Data + Task Paralell processing
+5) Sparse Matrices as input (Scipy and others)
+6) Spark as Backend Support
+7) Dask + Numba as Backend Support
+8) Write Tests
+9) Use manager for higher performance on heaviery functions
+10) Native support for list and tuples
 
 
 Dependency:
